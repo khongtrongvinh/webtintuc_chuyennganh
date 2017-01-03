@@ -1,0 +1,84 @@
+﻿@model weptintuc.Models.TIN_TUC
+
+@{
+    ViewBag.Title = "ChiTietTinTuc";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>ChiTietTinTuc</h2>
+
+<div>
+    <h4>Chi tiết tin tức</h4>
+    <hr />
+    <div style="width:800px; margin:auto">
+        <dl class="dl-horizontal">
+            <dt style="font-family:Arial; text-align:justify">
+                Mã tin tức
+            </dt>
+
+            <dd style="font-family:Arial">
+                @Html.DisplayFor(model => model.MATT)
+                </ddstyle="font-family:Arial;>
+            <dt style="font-family:Arial; text-align:justify">
+                Loại tin
+            </dt>
+
+            <dd style="font-family:Arial">
+                @Html.DisplayFor(model => model.LOAI_TIN.TEN_LOAI_TT)
+            </dd>
+
+            <dt style="font-family:Arial; text-align:justify">
+                Tiêu đề
+            </dt>
+
+            <dd style="font-family:Arial">
+                @Html.DisplayFor(model => model.TEN_TT)
+            </dd>
+
+            <dt style="font-family:Arial; text-align:justify">
+                Mô tả tin
+            </dt>
+
+            <dd style="font-family:Arial">
+                @Html.DisplayFor(model => model.MOTA_TT)
+            </dd>
+
+            <dt style="font-family:Arial; text-align:justify">
+                Nội dung tin
+            </dt>
+
+            <dd style="font-family:Arial">
+                @Html.DisplayFor(model => model.NOI_DUNG)
+            </dd>
+
+            <dt style="font-family:Arial; text-align:justify">
+                Hình ảnh
+            </dt>
+
+            <dd style="font-family:Arial">
+                <img src="@Url.Content("~/Content/img/"+ Model.HINH_ANH)" width="120px" />
+            </dd>
+
+            <dt style="font-family:Arial; text-align:justify">
+                Người viết tin
+            </dt>
+
+            <dd style="font-family:Arial">
+                @Html.DisplayFor(model => model.NGUOI_VIET_TIN)
+            </dd>
+
+            <dt style="font-family:Arial; text-align:justify">
+                Ngày đăng
+            </dt>
+
+            <dd style="font-family:Arial">
+                @Html.DisplayFor(model => model.NGAY_DANG)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Suatintuc", new { id = Model.MATT }) |
+    @Html.ActionLink("Trờ về trang quản lí tin", "TinTuc")
+</p>

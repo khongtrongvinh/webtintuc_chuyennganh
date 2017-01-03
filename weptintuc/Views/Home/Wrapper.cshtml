@@ -1,0 +1,38 @@
+﻿@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+
+
+@*@foreach (var tinmoi in Model)
+    {
+        <div class="cn_content bg" style="top:0px;">
+            <div class="image">
+                <img src="~/Content/img/@tinmoi.HINH_ANH" width="717" height="357" alt="">
+            </div>
+            <div class="caption">
+                <h3>
+                    <a href="@Url.Action("Chitiet", "Home", new{ id = tinmoi.MATT})">@tinmoi.TEN_TT</a>
+                </h3>
+                <p></p>
+            </div>
+        </div>
+    }*@
+@foreach (var tinmoi in Model)
+{
+    <a href="img01_url" target="_blank">
+        <img src="~/Content/img/@tinmoi.HINH_ANH" width="800" height="300" alt="">
+        <span>
+            @tinmoi.TEN_TT
+        </span>
+    </a>
+}
+

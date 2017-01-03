@@ -1,0 +1,91 @@
+﻿@model weptintuc.Models.TIN_TUC
+
+@{
+    ViewBag.Title = "Suatintuc";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>Suatintuc</h2>
+
+@using (Html.BeginForm("Suatintuc", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div style="width:800px; margin:auto">
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <div>
+                    <span>Loại tin :</span>
+                    @Html.DropDownList("MA_LOAI_TT")
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <span>Tiêu đề tin: </span>
+
+                @Html.ValidationMessageFor(model => model.TEN_TT)
+                @Html.EditorFor(model => model.TEN_TT)
+            </div>
+
+
+
+            <div class="form-group">
+                <span>Mô tả</span>
+                @*@Html.LabelFor(model => model.MOTA_TT, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                @*<div class="col-md-10">*@
+                <textarea name="MOTA_TT">@Model.MOTA_TT</textarea>
+                @*</div>*@
+            </div>
+
+
+            <div class="form-group">
+                <span>Nội dụng</span>
+                <textarea name="NOI_DUNG">@Model.NOI_DUNG</textarea>
+
+            </div>
+
+            <div class="form-group">
+
+                <span>Hình ảnh</span>
+                <div class="col-md-10">
+                    Chọn ảnh mới
+                    <input type="file" name="upload" />
+                    <img src="@Url.Content("~/Content/img/" + Model.HINH_ANH)" width="120px" />(Ảnh hiện tại)
+                    @ViewBag.ThongBao
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <span>Người viết tin</span>
+                @Html.EditorFor(model => model.NGUOI_VIET_TIN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NGUOI_VIET_TIN, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                <span>Ngày đăng</span>
+                <br />
+                <input type="date" name="NGAY_DANG" />
+                @Html.ValidationMessageFor(model => model.NGAY_DANG, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                <input type="submit" value="LƯU LẠI" class="btn btn-default" />
+
+            </div>
+        </div>
+    </div>
+
+    
+}
+
+<div>
+    @Html.ActionLink(" Trờ về trang quản lí tin", "TinTuc")
+</div>

@@ -1,0 +1,58 @@
+﻿@model weptintuc.Models.Lienhemodel
+
+@{
+    ViewBag.Title = "sendmail";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<section id="Lienhe">
+    <h2 >Thông tin góp ý </h2>
+    <p style="color:#ff0000">( * ) Bắt buộc nhập vào !</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset id="Noidung">
+            
+
+            @Html.EditorForModel()
+
+            <input type="submit" name="action" id="submit" value="Gửi Ý Kiến" />
+        </fieldset>
+
+    }
+    
+</section>
+<style>
+    #Lienhe{
+        margin-left:400px;
+    }
+    section h2{
+        margin-top:50px;
+       
+        color:#000000;
+    }
+    #Noidung{
+        border:1px solid #0bd5b0;
+        width:350px;
+        background-color:aquamarine;
+    }
+    input[type=submit]{
+    width: 70px;
+    height: 30px;
+    background: #E5F9F1;
+    cursor: pointer
+    }
+     input[type=submit]:hover{background: #f2ee31;}
+     #bottom{text-indent: -9999px;}
+    span{
+    display: block;
+    color: red;
+    font-size: 0.7em;
+    padding-left: 50px;
+    margin-left:30px;
+    }
+    
+
+</style>

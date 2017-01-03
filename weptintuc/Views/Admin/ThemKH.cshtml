@@ -1,0 +1,99 @@
+﻿@model weptintuc.Models.KHACH_HANG
+
+@{
+    ViewBag.Title = "ThemKH";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+
+        <hr />
+        <hr />
+        <h4>Thêm Khách hàng mới</h4>
+        <hr />
+
+        @Html.ValidationSummary(true)
+
+        <label>
+            <div style="margin-right:100px">
+                <span>TÊN TÀI KHOẢN</span>
+            </div>
+
+            @Html.EditorFor(model => model.TENTK)
+            @Html.ValidationMessageFor(model => model.TENTK)
+        </label>
+    </div>
+        <label>
+            <div style="margin-right:90px">
+                <span>MẬT KHẨU</span>
+            </div>
+
+            @Html.EditorFor(model => model.MATKHAU)
+            @Html.ValidationMessageFor(model => model.MATKHAU)
+        </label>
+        <div>
+            <label>
+                <div style="margin-right:200px">
+                    <span>HỌ VÀ TÊN</span>
+                </div>
+
+                @Html.EditorFor(model => model.HOTEN)
+                @Html.ValidationMessageFor(model => model.HOTEN)
+            </label>
+        </div>
+        <div>
+            <label>
+                <div style="margin-right:100px">
+                    <span>ĐỊA CHỈ</span>
+                </div>
+
+                @Html.EditorFor(model => model.DIACHI)
+                @Html.ValidationMessageFor(model => model.DIACHI)
+            </label>
+        </div>
+        <div>
+            <label>
+                <div style="margin-right:50px">
+                    <span>ĐIỆN THOẠI</span>
+                </div>
+
+                @Html.EditorFor(model => model.DIENTHOAI)
+                @Html.ValidationMessageFor(model => model.DIENTHOAI)
+            </label>
+        </div>
+        <div>
+            <label>
+                <div style="margin-right:200px">
+                    <span>NGÀY SINH</span>
+                </div>
+
+                @Html.EditorFor(model => model.NGAYSINH)
+                @Html.ValidationMessageFor(model => model.NGAYSINH)
+            </label>
+        </div>
+        <div>
+            <label>
+                <div style="margin-right:300px">
+                    <span>EMAIL</span>
+                </div>
+
+                @Html.EditorFor(model => model.EMAIL)
+                @Html.ValidationMessageFor(model => model.EMAIL)
+            </label>
+        </div>
+        
+                <div class="form-group">
+
+                    <input type="submit" value="THÊM MỚI" class="btn btn-default" />
+
+                </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về quản lí USER", "user")
+</div>

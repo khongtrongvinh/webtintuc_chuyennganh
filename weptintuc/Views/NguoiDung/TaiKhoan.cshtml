@@ -1,0 +1,70 @@
+﻿@model weptintuc.Models.KHACH_HANG
+
+@{
+    ViewBag.Title = "TaiKhoan";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class="main-title">
+    <p></p>
+</div>
+<p></p>
+<div class="widget" style="margin-left:400px; margin-right:400px">
+    <div class="marked-title">
+        <h3>Quản lý tài khoản</h3>
+    </div>
+    <table align="center">
+        <tr style="height:40px">
+            <td><p>Tên tài khoản: </p> </td>
+            <td>@Html.DisplayFor(model => model.TENTK)</td>
+        </tr>
+        <tr style="height:40px">
+            <td><p>Mật khẩu:</p>  </td>
+            <td>
+                <p>*******</p>
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td><p>Họ tên:</p></td>
+            <td>
+                @Html.DisplayFor(model => model.HOTEN)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td><p>Địa chỉ:</p></td>
+            <td>
+                @Html.DisplayFor(model => model.DIACHI)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td><p>Số điện thoại:</p></td>
+            <td>
+                @Html.DisplayFor(model => model.DIENTHOAI)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td><p>Ngày sinh:</p></td>
+            <td>
+                @Html.DisplayFor(model => model.NGAYSINH)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td><p>Email:</p></td>
+            <td>
+                @Html.DisplayFor(model => model.EMAIL)
+            </td>
+        </tr>
+
+
+    </table>
+    <p>
+        @Html.ActionLink("Sửa thông tin", "Suataikhoan", new { id = Model.MAKH })
+    </p>
+    <p>
+        @Html.ActionLink("Đổi mật khẩu", "DoiMK", new { id = Model.MAKH })
+    </p>
+
+</div>
+
+
+   

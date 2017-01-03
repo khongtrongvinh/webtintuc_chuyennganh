@@ -1,0 +1,89 @@
+﻿@model weptintuc.Models.TIN_TUC
+
+@{
+    ViewBag.Title = "Xoatintuc";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>XÁC NHẬN XOÁ TIN</h2>
+
+<h3>Chắc chắn xoá tin này?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt style="font-size:18px">
+            Mã tin tức:
+        </dt>
+
+        <dd style="font-size:18px">
+            @Html.DisplayFor(model => model.MATT)
+        </dd>
+        <dt style="font-size:18px">
+            Loại tin:
+        </dt>
+
+        <dd style="font-size:18px">
+            @Html.DisplayFor(model => model.LOAI_TIN.TEN_LOAI_TT)
+        </dd>
+
+        <dt style="font-size:18px">
+            Tiêu đề:
+        </dt>
+
+        <dd style="font-size:18px">
+            @Html.DisplayFor(model => model.TEN_TT)
+        </dd>
+
+        <dt style="font-size:18px">
+            Mô tả tin:
+        </dt>
+
+        <dd style="font-size:18px">
+            @Html.DisplayFor(model => model.MOTA_TT)
+        </dd>
+
+        <dt style="font-size:18px">
+            Nội dung tin:
+        </dt>
+
+        <dd style="text-align:justify; font-size:18px">
+            @Html.DisplayFor(model => model.NOI_DUNG)
+        </dd>
+
+        <dt style="font-size:18px">
+            Hình ảnh:
+        </dt>
+
+        <dd style="font-size:18px">
+            <img src="@Url.Content("~/Content/img/"+ Model.HINH_ANH)" width="120px" />
+        </dd>
+
+        <dt style="font-size:18px">
+            Người viết tin:
+        </dt>
+
+        <dd style="font-size:18px">
+            @Html.DisplayFor(model => model.NGUOI_VIET_TIN)
+        </dd>
+
+        <dt style="font-size:18px">
+            Ngày đăng:
+        </dt>
+
+        <dd style="font-size:18px">
+            @Html.DisplayFor(model => model.NGAY_DANG)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá tin" class="btn btn-default" /> |
+            @Html.ActionLink("Trờ về trang quản lí tin", "TinTuc")
+        </div>
+    }
+</div>

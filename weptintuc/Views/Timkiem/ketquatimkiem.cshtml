@@ -1,0 +1,86 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<weptintuc.Models.TIN_TUC>
+
+@{
+    ViewBag.Title = "ketquatimkiem";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+
+
+<div class="cn_wrapper">
+    <div id='coin-slider'>
+        @Html.Action("Wrapper", "Home")
+    </div>
+    <div class="cn_list">
+
+        <div class="fb-page" data-href="https://www.facebook.com/webdoan/?skip_nax_wizard=true" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/webdoan/?skip_nax_wizard=true" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/webdoan/?skip_nax_wizard=true"></a></blockquote></div>
+
+    </div>
+</div>
+<h2 style="font-weight:normal; color:black">Kết quả tìm kiếm</h2>
+<hr />
+<div style="color:red; font-size:medium">@ViewBag.Thongbao</div>
+<div class="main-content">
+    <div class="left-container">
+        <div class="row-fluid">
+            <div class="span7">
+                
+
+                @foreach (var tinmoi in Model)
+                {
+                    <article class="small">
+                        <div class="post-thumb">
+                            <a>
+                                <img src="~/Content/img/@tinmoi.HINH_ANH" alt="">
+                            </a>
+                            <div class="overlay">
+                                <div class="op"></div>
+                                <div class="cat">
+                                    <div class="icon"></div>
+                                    <a href="@Url.Action("Chitiet", "Home", new { id = tinmoi.MATT })" style="color:white">@tinmoi.LOAI_TIN.TEN_LOAI_TT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-post-desc">
+                            <p style="text-align:justify">
+                                <span style="color: #e9b229">
+                                    @tinmoi.NGAY_DANG
+                                </span>
+                            </p>
+                            <h2>
+                                <a href="@Url.Action("Chitiet", "Home", new{ id = tinmoi.MATT})">
+                                    <span>@tinmoi.TEN_TT</span>
+                                </a>
+                            </h2>
+                            <h3>
+                                <a>
+                                    <span>
+                                        @Html.Raw(tinmoi.MOTA_TT)
+                                    </span>
+                        </div>
+                    </article>
+                }
+
+            </div>
+        </div>
+
+        <div class="post-navi">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        </div>
+
+        <style>
+            .menutrang li {
+                display: inline;
+            }
+             .menutrang li a {
+                    color: black;
+                }
+        </style>
+    </div>
+    
+    <div class="clear"></div>
+    <div class="clear"></div>
+</div>
+

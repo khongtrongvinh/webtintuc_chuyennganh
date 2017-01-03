@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="dbNews">
+  <DataContextMoniker Name="/dbNewsDataContext" />
+  <nestedChildShapes>
+    <classShape Id="db029b2a-183f-499f-a41f-740c2d5f8771" absoluteBounds="0.75, 4.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/dbNewsDataContext/KHACH_HANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8e4a151-7256-48a0-b44d-cf69c63088cb" absoluteBounds="0.765, 5.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="217c662e-b16a-4273-b6af-f007841fb254" absoluteBounds="3.75, 4.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/dbNewsDataContext/TAI_KHOAN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="498fff0d-ad5f-45de-b450-778369ee446b" absoluteBounds="3.765, 5.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7a863252-d426-4f93-bb42-67bffa0df274" absoluteBounds="0.75, 1.5, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/dbNewsDataContext/LOAI_TIN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aa2b7d83-6753-44e4-99cc-e685eafb1e89" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cf968c0b-e795-48b5-b2f6-dfbcf35b0717" absoluteBounds="3.5, 1, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/dbNewsDataContext/TIN_TUC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4907860c-ebfa-4199-b524-94ad915b0891" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.09699625651042); (3.5 : 2.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbNewsDataContext/LOAI_TIN/LOAI_TIN_TIN_TUC" />
+      <nodes>
+        <classShapeMoniker Id="7a863252-d426-4f93-bb42-67bffa0df274" />
+        <classShapeMoniker Id="cf968c0b-e795-48b5-b2f6-dfbcf35b0717" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

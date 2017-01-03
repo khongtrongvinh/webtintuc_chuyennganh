@@ -1,0 +1,106 @@
+﻿@using weptintuc.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<TIN_TUC>
+
+@helper Truncate(string input, int length)
+{ 
+    if(input.Length<length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0,length)<text>...</text>
+    }
+}
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ TIN TỨC</h2>
+
+<p>
+    @Html.ActionLink("THÊM TIN MỚI", "themtt")
+</p>
+<table class="table" align="center" border="1">
+    <tr style="text-align: center; font-weight:bold; font-family:Arial; font-size:18px; color:white; background-color: blue">
+        <th style="text-align:center; width:200px">
+            Mã tin tức
+        </th>
+        <th style="text-align:center; width:200px">
+            Loại tin
+        </th>
+        <th style="text-align:center; width:200px">
+            Tên tin tức
+        </th>
+
+        <th style="text-align:center; width:200px">
+            Mô tả tin
+        </th>
+        <th style="text-align:center; width:500px">
+            Nội dung tin
+        </th>
+        <th style="text-align:center; width:100px">
+            Hình ảnh
+        </th>
+        <th style="text-align:center; width:200px">
+            Người viết tin
+        </th>
+        <th style="text-align:center; width:80px">
+            Ngày đăng
+        </th>
+        <th style="text-align:center; width:200px">
+            Tuỳ chọn
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MATT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOAI_TIN.TEN_LOAI_TT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TEN_TT)
+            </td>
+            <td>
+                @Truncate(item.MOTA_TT, 50)
+            </td>
+            <td>
+                @Truncate(item.NOI_DUNG, 100)
+            </td>
+            <td>
+                <img src="@Url.Content("~/Content/img/"+ item.HINH_ANH)" style="width:250px; height:250px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGUOI_VIET_TIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAY_DANG)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Suatintuc", new { id = item.MATT }) |
+                @Html.ActionLink("Chi Tiết", "ChiTietTinTuc", new { id = item.MATT }) |
+                @Html.ActionLink("Xoá", "Xoatintuc", new { id = item.MATT })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Tintuc", new { page = page }))
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+
+
+</div>
+<style>
+    .pagination li {
+        display: inline;
+        font-size: 18px;
+    }
+</style>

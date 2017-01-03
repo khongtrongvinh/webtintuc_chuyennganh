@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="News" Class="dbNewsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-KGJ30AC\SQLEXPRESS;Initial Catalog=News;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="NewsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.KHACH_HANG" Member="KHACH_HANGs">
+    <Type Name="KHACH_HANG">
+      <Column Name="MAKH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENTK" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MATKHAU" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HOTEN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DIENTHOAI" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="NGAYSINH" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TAI_KHOAN" Member="TAI_KHOANs">
+    <Type Name="TAI_KHOAN">
+      <Column Name="MATK" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEN_TAI_KHOAN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MAT_KHAU" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOAI_TIN" Member="LOAI_TINs">
+    <Type Name="LOAI_TIN">
+      <Column Name="MA_LOAI_TT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEN_LOAI_TT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="LOAI_TIN_TIN_TUC" Member="TIN_TUCs" ThisKey="MA_LOAI_TT" OtherKey="MA_LOAI_TT" Type="TIN_TUC" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIN_TUC" Member="TIN_TUCs">
+    <Type Name="TIN_TUC">
+      <Column Name="MATT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MA_LOAI_TT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TEN_TT" Type="System.String" DbType="NVarChar(350) NOT NULL" CanBeNull="false" />
+      <Column Name="MOTA_TT" Type="System.String" DbType="NVarChar(350) NOT NULL" CanBeNull="false" />
+      <Column Name="NOI_DUNG" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="HINH_ANH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NGUOI_VIET_TIN" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="NGAY_DANG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="LOAI_TIN_TIN_TUC" Member="LOAI_TIN" ThisKey="MA_LOAI_TT" OtherKey="MA_LOAI_TT" Type="LOAI_TIN" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

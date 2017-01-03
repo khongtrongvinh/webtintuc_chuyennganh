@@ -1,0 +1,40 @@
+﻿@model weptintuc.Models.TAI_KHOAN
+
+@{
+    ViewBag.Title = "XoaTK";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>XoaTK</h2>
+
+<div>
+    <h4>XÁC NHẬN XOÁ TÀI KHOẢN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Tài Khoản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEN_TAI_KHOAN)
+        </dd>
+
+        <dt>
+            Mật Khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAT_KHAU)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về danh sách tài khoản", "TaiKhoan")
+        </div>
+    }
+</div>

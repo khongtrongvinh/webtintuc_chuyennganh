@@ -1,0 +1,184 @@
+﻿@model weptintuc.Models.KHACH_HANG
+
+@{
+    ViewBag.Title = "Dangky";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<div class="main-title">
+<div class="widget">
+        <div class="marked-title">
+            
+            <h3>Đăng ký thành viên<br /><br /></h3>
+        </div>
+    <div style="color:red; text-align:left">(*) Trường không được để trống!</div>
+    <form id="formdk" method="post" action="#" name="register">
+        <p>
+            <label for="username">Họ và Tên(*)</label>
+            <input class="text" type="text" name="HoTen" id="HoTen" style="" />
+        </p>
+        <p>
+            <label for="username">Tên đăng nhập(*)</label>
+            <input class="text" type="text" name="TenDN" id="TenDN" />
+        </p>
+        <p>
+            <label for="password">Password(*)</label>
+            <input class="text" type="password" name="MatKhau" id="MatKhau" />
+        </p>
+        <p>
+            <label for="confirm_pass">Nhập lại password(*)</label>
+            <input class="text" type="password" name="MatKhauNL" id="MatKhauNL" />
+        </p>
+        <p>
+            <label for="email">Email(*)</label>
+            <input class="text" type="text" name="Email" id="Email" />
+        </p>
+        <p>
+            <label for="diachi">Địa Chỉ(*)</label>
+            <input class="text" type="text" name="DiaChi" id="DiaChi" />
+        </p>
+        
+        <p>
+            <label for="phone">Số điện thoại(*)</label>
+            <input class="text" type="text" name="DienThoai" id="DienThoai" />
+        </p>
+        <p>
+            <label for="phone">Ngày Sinh(*)</label>
+            <input class="text" type="date" name="Ngaysinh" id="Ngaysinh" />
+        </p>
+
+        <p>
+            <label id="bottom">submit</label>
+            <input type="submit" name="action" id="submit" value="Đăng ký" />
+        </p>
+    </form>
+
+ </div>       
+<script type="text/javascript">
+    window.onload = function(){
+    var inputs = document.forms['register'].getElementsByTagName('input');
+    var run_onchange = false;
+    function valid(){
+        var errors = false;
+        
+        for(var i=0; i<inputs.length; i++){
+            var value=inputs[i].value;
+            var id=inputs[i].getAttribute('id');
+
+            // Tạo phần tử span lưu thông tin lỗi
+            var span = document.createElement('span');
+            // Nếu span đã tồn tại thì remove
+            var p = inputs[i].parentNode;
+            if(p.lastChild.nodeName == 'SPAN') {p.removeChild(p.lastChild);}
+
+            // Kiểm tra rỗng
+            if(value == ''){
+                span.innerHTML ='Thông tin không được để trống';
+            }else{
+                // Kiểm tra các trường hợp khác
+                if(id == 'Email'){
+                    if(reg_mail.test(value) == false){ span.innerHTML ='Email không hợp lệ (ví dụ: abc@gmail.com)';}
+                    var email =value;
+                }
+
+                // Kiểm tra password
+                if(id == 'MatKhau'){
+                    if(value.length <6){span.innerHTML ='Password phải từ 6 ký tự' ;}
+                    var pass=value;
+                }
+                // Kiểm tra password nhập lại
+                if(id == 'MatKhauNL' && value != pass){span.innerHTML ='Password nhập lại chưa đúng';}
+                // Kiểm tra số điện thoại
+                if(id == 'DienThoai' && isNaN(value) == true){span.innerHTML ='Số điện thoại phải là kiểu số';}
+            }
+
+            // Nếu có lỗi thì chèn span vào hồ sơ, chạy onchange, submit return false, highlight border
+            if(span.innerHTML != ''){
+                inputs[i].parentNode.appendChild(span);
+                errors = true;
+                run_onchange = true;
+                inputs[i].style.border = '1px solid #c6807b';
+                inputs[i].style.background = '#fffcf9';
+            }
+        }// end for
+
+        if(errors == false){alert('Đăng ký thành công');}
+        return !errors;
+    }// end valid()
+
+    // Chạy hàm kiểm tra valid()
+    var register = document.getElementById('submit');
+    register.onclick = function(){
+        return valid();
+    }
+
+    // Kiểm tra lỗi với sự kiện onchange -> gọi lại hàm valid()
+    for(var i=0; i<inputs.length; i++){
+        var id=inputs[i].getAttribute('id');
+        inputs[i].onchange=function(){
+            if(run_onchange ==true){
+            this.style.border='1px solid #999' ;
+            this.style.background='#fff' ;
+            valid();
+        }
+    }
+    }
+        }
+</script>
+<style>
+    .widget{
+        margin-left:350px;
+        
+    }
+    .marked-title{
+        margin-top:50px;
+    }
+    
+    .marked-title h3{
+        background-color:none;
+        color:#000000;
+       
+    }
+    #register{
+    width: 500px;
+    margin: 0 auto;
+    }
+    #register h1{
+    font-size: 2em;
+    padding: 20px 0; color: #0B3B7F;
+    }
+    #formdk{
+        border:2px solid #9CD8C0;
+        background-color:#E5F9F1;
+        height:auto;
+        width:450px;
+    }
+        
+        
+    
+    form{font: 1.2em/1.5em tahoma, verdana, arial, sans-serif;}
+    form p{min-height: 30px;}
+    form label{
+    width: 200px;
+    display: block; float: left;
+    }
+    form input{
+    width: 200px;
+    height: 22px;
+    border: 1px solid #999; background: none;
+    }
+    form input[type=submit]{
+    width: 70px;
+    height: 30px;
+    background: #E5F9F1;
+    cursor: pointer
+    }
+    form input[type=submit]:hover{background: #f2ee31;}
+    form #bottom{text-indent: -9999px;}
+    form span{
+    display: block;
+    color: red;
+    font-size: 0.7em;
+    padding-left: 150px;
+    }
+</style>    
+    

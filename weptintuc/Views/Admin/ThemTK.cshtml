@@ -1,0 +1,48 @@
+﻿@model weptintuc.Models.TAI_KHOAN
+
+@{
+    ViewBag.Title = "Thêm tài khoản";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            
+            <hr />
+            <hr />
+            <h4>Thêm tài khoản</h4>
+            <hr />
+           
+            @Html.ValidationSummary(true)
+            
+                <label>
+                    <div style="margin-right:50px">
+                        <span>TÊN TÀI KHOẢN</span>
+                    </div>
+
+                    @Html.EditorFor(model => model.TEN_TAI_KHOAN)
+                    @Html.ValidationMessageFor(model => model.TEN_TAI_KHOAN)
+                </label>
+        </div>        
+                <label>
+                    <div style="margin-right:50px">
+                        <span>MẬT KHẨU</span>
+                    </div>
+
+                        @Html.EditorFor(model => model.MAT_KHAU)
+                        @Html.ValidationMessageFor(model => model.MAT_KHAU)
+                </label>
+                <div class="form-group">
+
+                    <input type="submit" value="THÊM MỚI" class="btn btn-default" />
+
+                </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về quản lí tài khoản", "TaiKhoan")
+</div>

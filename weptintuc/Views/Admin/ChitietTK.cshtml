@@ -1,0 +1,37 @@
+﻿@model weptintuc.Models.TAI_KHOAN
+
+@{
+    ViewBag.Title = "ChitietTK";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>ChitietTK</h2>
+
+<div>
+    <h4>THÔNG TIN TÀI KHOẢN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Tài Khoản
+            @*@Html.DisplayNameFor(model => model.TEN_TAI_KHOAN)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEN_TAI_KHOAN)
+        </dd>
+
+        <dt>
+            Mật Khẩu
+            @*@Html.DisplayNameFor(model => model.MAT_KHAU)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAT_KHAU)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MATK }) |
+    @Html.ActionLink("Trở về danh sách tài khoản", "TaiKhoan")
+</p>

@@ -1,0 +1,114 @@
+﻿@using weptintuc.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<TIN_TUC>
+
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length) 
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+<div class="cn_wrapper">
+    <div id='coin-slider'>
+        @Html.Action("Wrapper", "Home")
+    </div>
+    <div class="cn_list">
+
+        <div class="fb-page" data-href="https://www.facebook.com/webdoan/?skip_nax_wizard=true" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/webdoan/?skip_nax_wizard=true" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/webdoan/?skip_nax_wizard=true"></a></blockquote></div>
+
+    </div>
+</div>
+<div class="main-content">
+    <div class="left-container">
+        <div class="row-fluid">
+            <div class="span7">
+                <div class="marked-title">
+                    <h3>
+                        <a class="more-list-index">
+                        <span style="color:white">Tin mới</span>
+                        </a>
+                    </h3>
+                </div>
+                
+                @foreach (var tinmoi in Model)
+                {
+                    <article class="small">
+                    <div class="post-thumb">
+                        <a>
+                            <img src="~/Content/img/@tinmoi.HINH_ANH" alt="">
+                        </a>
+                        <div class="overlay">
+                            <div class="op"></div>
+                            <div class="cat">
+                                <div class="icon"></div>
+                                <a href="@Url.Action("Chitiet", "Home", new { id = tinmoi.MATT })" style="color:white">@tinmoi.LOAI_TIN.TEN_LOAI_TT</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat-post-desc">
+                        <p style="text-align:justify">
+                            <span style="color: #e9b229">
+                                @tinmoi.NGAY_DANG
+                            </span>
+                        </p>
+                        <h2><a href="@Url.Action("Chitiet", "Home", new{ id = tinmoi.MATT})">
+                            <span>@tinmoi.TEN_TT</span>
+                            </a>
+                        </h2>
+                        <h3>
+                            <span style="font-size:small">
+                                @Html.Raw(tinmoi.MOTA_TT)
+                            </span>
+                        </h3>
+                     </div>
+                    </article>
+                }
+                
+            </div>
+        </div>
+        
+        <div class="post-navi">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new {page = page }))
+        </div>
+        <style>
+            .menutrang li{
+                display:inline;
+            }
+            .menutrang li a {
+                color: black;
+            }
+        </style>
+        
+    </div>
+    <div class="right-container">
+        <div class="sidebar">
+            <div class="widget">
+            
+                <div>
+                    <img src="~/Content/img/sim-so-dep.gif"/>
+                </div>
+                <div style="border:1px solid #e9b229; margin-top:250px; width:350px; height:600px; position:inherit; background-color:#e9b229">
+                    <div style="background-color:#e9b229; color:#0026ff; padding-left:120px; font-size:medium; height:auto">Góc Sáng tạo</div>
+                    <div><iframe width="350" height="250" src="https://www.youtube.com/embed/B1i7kMZ20aU" frameborder="0" allowfullscreen></iframe></div>
+                    <div style="margin-top:50px" ><iframe width="350" height="250" src="https://www.youtube.com/embed/V3BmnewFOC8" frameborder="0" allowfullscreen></iframe></div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="clear"></div>
+    <div class="clear"></div>
+</div>
+

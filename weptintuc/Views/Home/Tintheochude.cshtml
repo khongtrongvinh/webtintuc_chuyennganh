@@ -1,0 +1,79 @@
+﻿@model PagedList.PagedList<TIN_TUC>
+@using weptintuc.Models;
+@using PagedList.Mvc;
+
+
+
+
+@{
+    ViewBag.Title = "Chủ đề";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<div class="main-title">
+    <p></p>
+</div>
+
+<div class="left-container1">
+    <div class="row-fluid">
+        <div class="span1">
+            <div class="marked-title">
+                <h3>
+                    <a class="more-list-index" href="Tin-hot/" title="Tin hot">
+                        <span style="color:white">Danh mục</span>
+                    </a>
+                </h3>
+            </div>
+
+            @foreach (var tintuc in Model)
+            {
+                <article class="small">
+                    <div class="post-thumb">
+                        <a href="@Url.Action("Chitiet", "Home", new{ id = tintuc.MATT})"><img src="~/Content/img/@tintuc.HINH_ANH" alt="" width="320" height="180"></a>
+                        <div class="overlay">
+                            <div class="op"></div>
+                            <div class="cat">
+                                <div class="icon"></div>
+                                @tintuc.LOAI_TIN.TEN_LOAI_TT
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat-post-desc">
+                        <p style="text-align:justify">
+                            <span style="color: #e9b229">
+                                @tintuc.NGAY_DANG
+                            </span>
+                        </p>
+                        <h2>
+                            <a href="@Url.Action("Chitiet", "Home", new{ id = tintuc.MATT})">
+                                <span style="text-align:justify">@tintuc.TEN_TT</span>
+                            </a>
+                        </h2>
+
+
+                    </div>
+                </article>
+            }
+        </div>
+        <div style="float:right">
+            <img src="~/Content/img/sim-so-dep.gif" />
+        </div>
+        <div class="post-navi">
+            @Html.PagedListPager(Model, page => Url.Action("Tintheochude", new { page = page }))
+        </div>
+        <style>
+            .menutrang li {
+                display: inline;
+            }
+
+                .menutrang li a {
+                    color: black;
+                }
+        </style>
+        <div class="clear"></div>
+    </div>
+    
+</div>
+<p></p>
+<div class="clear"></div>
+
+

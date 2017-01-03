@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+
+<div id="main">
+    <div class="main-content">
+        <div class="left-container">
+            <article>
+                <div style="text-align:justify" class="title-box">
+                    <h2>@Model.TEN_TT</h2>
+                    
+                </div>
+                <div class="post-thumb">
+                    <img src="~/Content/img/@Model.HINH_ANH" alt="">
+                    
+                </div>
+                <div class="post-info">
+                    <ul>
+                        <li>Chuyên mục<br><span>@Model.LOAI_TIN.TEN_LOAI_TT</span></li>
+                        <li>Tác giả<br><span>@Model.NGUOI_VIET_TIN</span></li>
+
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div style="text-align:justify" class="post-content">
+                   
+                    @Html.Raw(Model.NOI_DUNG)<br />
+                    
+                    
+                </div>
+                <div class="fb-comments" data-href="http://localhost:9694/Home/Chitiet/@Model.MATT" data-numposts="3"></div>
+            </article>
+            <div class="clear"></div>
+        </div>
+        <div class="right-container">
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+

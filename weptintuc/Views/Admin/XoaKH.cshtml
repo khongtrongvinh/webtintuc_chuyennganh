@@ -1,0 +1,81 @@
+﻿@model weptintuc.Models.KHACH_HANG
+
+@{
+    ViewBag.Title = "XoaKH";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>XoaKH</h2>
+
+
+<div>
+    <h4>XÁC NHẬN XOÁ KHÁCH HÀNG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Tài Khoản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENTK)
+        </dd>
+
+        <dt>
+            Mật Khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATKHAU)
+        </dd>
+
+        <dt>
+            Họ và Tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOTEN)
+        </dd>
+
+        <dt>
+            Địa Chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+
+        <dt>
+            Điện Thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIENTHOAI)
+        </dd>
+
+        <dt>
+            Ngày Sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYSINH)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="XOÁ" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về danh sách khách hàng", "user")
+        </div>
+    }
+</div>

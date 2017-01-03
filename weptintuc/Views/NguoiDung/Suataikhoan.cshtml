@@ -1,0 +1,77 @@
+﻿@model weptintuc.Models.KHACH_HANG
+
+@{
+    ViewBag.Title = "Suataikhoan";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class="main-title">
+    <p></p>
+</div>
+<p></p>
+<div class="widget" style="margin-left:300px; margin-right:300px">
+    <div class="marked-title">
+        <h3>Sửa thông tin</h3>
+    </div>
+    <table align="center">
+        @using (Html.BeginForm())
+        {
+           @Html.ValidationSummary(true)
+            <tr style="height:40px">
+                <td>Họ tên:</td>
+                <td>
+                    @Html.TextBox("HoTen")
+                </td>
+                <td><p style="color:red">*  @ViewData["loi1"]</p></td>
+                
+            </tr>
+            
+            <tr style="height:40px">
+                <td>Email:</td>
+                <td>
+                    @Html.TextBox("Email")
+                </td>
+                <td><p style="color:red">*@ViewData["loi5"]</p></td>
+                
+            </tr>
+            <tr style="height:40px">
+                <td>Địa chỉ:</td>
+                <td>
+                    @Html.TextBox("DiaCHi")
+                </td>
+                <td></td>
+            </tr>
+            <tr style="height:40px">
+                <td>Điện thoại:</td>
+                <td>
+                    @Html.TextBox("DienThoai")
+                </td>
+                <td><p style="color:red">*@ViewData["loi6"]</p></td>
+                
+            </tr>
+            <tr style="height:40px">
+                <td>Ngày sinh:</td>
+                <td>
+                    <input type="date" name="Ngaysinh" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><p style="color:red">* : không được để trống</p></td>
+                <td></td>
+            </tr>
+            <tr style="height:40px">
+                <td></td>
+                <td>
+                    <input type="submit" value="Lưu" />
+                </td>
+                <td></td>
+            </tr>
+
+        }
+    </table>
+    <p></p>
+</div>
+
+

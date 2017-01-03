@@ -1,0 +1,41 @@
+﻿@model weptintuc.Models.LOAI_TIN
+
+@{
+    ViewBag.Title = "SuaLT";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>Sửa loại tin</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div style="padding-top:10px">
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.MA_LOAI_TT)
+            <label>
+                <span>Mã loại tin tức:</span>
+                @Html.EditorFor(model => model.MA_LOAI_TT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MA_LOAI_TT, "", new { @class = "text-danger" })
+            </label>
+            <label>
+                <span>Tên loại tin tức:</span>
+                @Html.EditorFor(model => model.TEN_LOAI_TT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TEN_LOAI_TT, "", new { @class = "text-danger" })
+            </label>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <input type="submit" value="Lưu" class="btn btn-default" />
+    </div>
+    <div style="font-size: 18px; font-family: Arial;float:left">
+        @Html.ActionLink("Trở về danh sách loại tin", "LoaiTinTuc")
+    </div>
+}
+

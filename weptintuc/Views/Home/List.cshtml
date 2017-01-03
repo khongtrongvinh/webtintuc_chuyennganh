@@ -1,0 +1,33 @@
+﻿
+
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+@foreach (var tin in Model)
+{
+
+    <div class="cn_page" style="display:block;">
+        <div class="cn_item">
+            <div class="left-box">
+                <img src="~/Content/img/@tin.HINH_ANH" alt="" height="45">
+            </div>
+            <div class="right-box">
+                <h4>@Truncate(tin.TEN_TT, 25)</h4>
+                <p>@tin.NGAY_DANG</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+}
+
+

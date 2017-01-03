@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<div class="main-title">
+    <p></p>
+</div>
+
+
+
+<div class="widget" style="margin-left:400px; margin-right:400px">
+    <div class="marked-title">
+        <h3>Đăng nhập</h3>
+    </div>
+    <table id="loginnguoidung" align="center" style="margin-top:0px">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <tr style="height:40px">
+                <td>Tên đăng nhập:</td>
+                <td>
+                    @Html.TextBox("TenDN")
+                    <p style="color:red">@ViewData["loi1"]</p>
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Mật khẩu:</td>
+                <td>
+                    @Html.Password("MatKhau")
+                    <p style="color:red">@ViewData["loi2"]</p>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><p style="color:red">@ViewBag.Thongbao</p></td>
+            </tr>
+            <tr style="height:40px">
+                <td></td>
+                <td>
+                    
+                    <input type="submit" name="action" id="submit" value="Đăng Nhập" />
+                </td>
+            </tr>
+
+        }
+    </table>
+    
+</div>
+<style>
+    #loginnguoidung{
+        border:1px solid #00ff90;
+        background-color:#a2e4e4;
+        height:100px;
+    }
+     .marked-title h3{
+        background-color:none;
+        color:#000000;
+       
+    }
+    table input[type=submit]{
+    width: 70px;
+    height: 30px;
+    background: #E5F9F1;
+    cursor: pointer
+    }
+    table input[type=submit]:hover{background: #f2ee31;}
+    table #bottom{text-indent: -9999px;}
+    table span{
+    display: block;
+    color: red;
+    font-size: 0.7em;
+    padding-left: 150px;
+    }
+</style>
+
+
+

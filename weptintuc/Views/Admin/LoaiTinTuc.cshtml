@@ -1,0 +1,58 @@
+﻿@using weptintuc.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<LOAI_TIN>
+
+
+
+@{
+    ViewBag.Title = "LoaiTinTuc";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ LOẠI TIN</h2>
+
+
+<p>
+    @Html.ActionLink("THÊM LOẠI MỚI", "ThemLoaiTin")
+</p>
+<table class="table" align="center" border="1">
+    <tr style="text-align: center; font-weight:bold; font-family:Arial; font-size:18px; color:white; background-color: blue">
+        <th style="text-align:center; width:5px">
+            Mã loại tin
+        </th>
+        <th style="text-align:center; width:60px">
+            Tên loại tin
+        </th>
+        <th style="text-align:center; width:20px">
+            Tuỳ chọn
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MA_LOAI_TT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TEN_LOAI_TT)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "SuaLT", new { id = item.MA_LOAI_TT }) |
+                @*@Html.ActionLink("Chi tiết", "Details", new { id=item.MA_LOAI_TT }) |*@
+                @Html.ActionLink("Xoá", "XoaLT", new { id = item.MA_LOAI_TT })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("LoaiTinTuc", new { page = page }))
+</div>
+<style>
+    .pagination li {
+        display: inline;
+        font-size: 18px;
+    }
+</style>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
